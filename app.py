@@ -1,9 +1,3 @@
-# In youtube func:
-# Disable OAuthlib's HTTPS verification when running locally.
-# *DO NOT* leave this option enabled in production.
-# os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-
-import locale
 from time import sleep
 from fs import get_config
 from youtube import youtube
@@ -21,8 +15,6 @@ REGION_CODE = CONFIG['regionCode']
 MAX_RESULTS = CONFIG['maxResults']
 SLEEP_TIMEOUT = CONFIG['sleep_timeout']
 
-locale.setlocale(locale.LC_ALL, 'en_US')
-
 
 def get_new_videos():
     videos_dict = youtube(SCOPES, CREDENTIAL_FILE_NAME,
@@ -34,12 +26,9 @@ def format_message(videos_list):
     videos = []
     for video in videos_list:
         title = video['snippet']['title']
-        views = locale.format_string(
-            "%d", int(video['statistics']['viewCount']), grouping=True)
-        likes = locale.format_string(
-            "%d", int(video['statistics']['likeCount']), grouping=True)
-        dislikes = locale.format_string(
-            "%d", int(video['statistics']['dislikeCount']), grouping=True)
+        views = format(int(video['statistics']['viewCount']), ",")
+        likes = format(int(video['statistics']['likeCount']), ",")
+        dislikes = format(int(video['statistics']['dislikeCount']), ",")
         url = f"https://youtube.com/watch?v={video['id']}"
 
         videos.append(
