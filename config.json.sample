@@ -1,0 +1,9 @@
+{
+    "telegram_api_key": "",
+    "channel_id": "@",
+    "youtube_api_service_account_credentials_file_name": "xxx.json",
+    "videoCategoryId": 28,
+    "regionCode": "US",
+    "maxResults": 10,
+    "sleep_timeout": 1
+}
