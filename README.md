@@ -16,6 +16,8 @@ cd youtube-telegram
 cp config/config.json.sample config/config.json
 ```
 
+> Get YouTube API credentials
+
 > Edit config/config.json
 
 ```bash
