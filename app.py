@@ -13,7 +13,7 @@ from telegram import telegram_send_message
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.readonly"]
 CONFIG = get_config('config/config.json')
-CREDENTIAL_FILE_NAME = CONFIG['config/youtube_api_service_account_credentials_file_name']
+CREDENTIAL_FILE_NAME = f"config/{CONFIG['youtube_api_service_account_credentials_file_name']}"
 TELEGRAM_API_KEY = CONFIG['telegram_api_key']
 TELEGRAM_CHANNEL_ID = CONFIG['channel_id']
 VIDEO_CATEGORY_ID = CONFIG['videoCategoryId']
