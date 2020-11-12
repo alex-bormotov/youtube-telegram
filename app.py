@@ -46,7 +46,7 @@ def send_videos():
                     telegram_send_message(
                         TELEGRAM_API_KEY, TELEGRAM_CHANNEL_ID, video)
                     sleep(SLEEP_TIMEOUT)
-                return
+                break
         except Exception:
             sleep(SLEEP_TIMEOUT)
 
@@ -54,7 +54,7 @@ def send_videos():
 def main():
     send_videos()
     while True:
-        if int(datetime.strftime(datetime.utcnow(), '%H')) == 7:
+        if datetime.strftime(datetime.utcnow(), '%H:%M:%S') == '04:00:00':
             send_videos()
 
 
