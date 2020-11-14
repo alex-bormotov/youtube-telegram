@@ -1,3 +1,4 @@
+import re
 from time import sleep
 from fs import get_config
 from youtube import youtube
@@ -25,7 +26,7 @@ def get_new_videos():
 def format_message(videos_list):
     videos = []
     for video in videos_list:
-        title = video['snippet']['title']
+        title = re.sub(r'[^a-zA-Z0-9 \n\.]', '', video['snippet']['title'])
         views = format(int(video['statistics']['viewCount']), ",")
         likes = format(int(video['statistics']['likeCount']), ",")
         dislikes = format(int(video['statistics']['dislikeCount']), ",")
